@@ -1,0 +1,14 @@
+pip install fastapi
+pip install uvicorn
+pip install sqlalchemy
+pip install psycopg2-binary
+pip install alembic
+pip install python-dotenv
+pip install pydantic-settings
+pip install loguru
+
+
+pip install pytest
+pip install black
+pip install isort
+pip install mypy
