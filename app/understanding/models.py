@@ -16,3 +16,15 @@ class MetadataSearchResult:
     unmatched_terms: list[str] = field(default_factory=list)
 
     coverage_score: float = 0.0
+
+
+@dataclass(slots=True)
+class BusinessEntity:
+    entity_type: str
+    value: str
+    matched_column: str
+
+@dataclass(slots=True)
+class BusinessResolutionResult:
+    entities: list[BusinessEntity] = field(default_factory=list)
+    unresolved_terms: list[str] = field(default_factory=list)
