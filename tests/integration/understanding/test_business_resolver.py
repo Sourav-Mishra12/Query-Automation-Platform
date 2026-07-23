@@ -158,9 +158,9 @@ def test_unresolved_term():
 
     try:
         query = NormalizedQuery(
-            original="Show Batman trades",
-            normalized="show batman trades",
-            tokens=["show", "batman", "trades"],
+            original="Show Doomsday trades",
+            normalized="show doomsday trades",
+            tokens=["show", "doomsday", "trades"],
         )
 
         metadata = MetadataSearchResult(
@@ -194,6 +194,6 @@ def test_unresolved_term():
 
 if __name__ == "__main__":
 
-    # test_resolves_company_symbol()
-    # test_resolves_dealer()
+    test_resolves_company_symbol()
+    test_resolves_dealer()
     test_unresolved_term()
