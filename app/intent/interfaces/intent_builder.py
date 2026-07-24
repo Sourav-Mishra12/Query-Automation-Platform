@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
-from app.understanding.models.metadata_search_result import MetadataSearchResult
-from app.business.models.business_resolution_result import BusinessResolutionResult
+from app.understanding.models import MetadataSearchResult
+from app.understanding.models import BusinessResolutionResult
 from app.intent.models.query_intent import QueryIntent
 
 

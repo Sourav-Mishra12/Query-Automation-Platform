@@ -1,36 +1,43 @@
+from typing import List, Dict
+
+
 class LLMClient:
     """
-    Wrapper around an LLM provider.
+    Generic wrapper around an LLM provider.
+
+    This client is shared across the application for:
+    - AI Enrichment
+    - SQL Generation
+    - Response Generation
+    - Future AI features
     """
 
     def __init__(
         self,
         client,
         model: str,
+        temperature: float = 0.0,
     ):
         self._client = client
         self._model = model
-
-
+        self._temperature = temperature
 
     def generate(
         self,
-        prompt: str,
+        messages: List[Dict[str, str]],
     ) -> str:
         """
-        Sends the prompt to the configured LLM and
-        returns the raw response.
+        Sends chat messages to the configured LLM
+        and returns the generated response.
         """
-        
+
         response = self._client.chat.completions.create(
             model=self._model,
-            temperature=0.0,
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt,
-                }
-            ],
+            temperature=self._temperature,
+            messages=messages,
         )
 
-        return response.choices[0].message.content
+        if not response.choices:
+            raise Exception("LLM returned no response.")
+
+        return response.choices[0].message.content.strip()
